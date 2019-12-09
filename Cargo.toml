@@ -1,0 +1,34 @@
+[package]
+authors = ["Hosun Zhu <hosun@linux.com>"]
+edition = "2018"
+readme = "README.md"
+name = "firecontrol-rs"
+version = "0.1.0"
+
+[dependencies]
+cortex-m = "0.6.1"
+cortex-m-rt = "0.6.10"
+cortex-m-semihosting = "0.3.5"
+panic-abort = "0.3.2"
+panic-semihosting = "0.5.3"
+sm = "0.9.0"
+heapless = "0.5.1"
+
+[dependencies.fsm-rs]
+path = "./fsm-rs/"
+version = "0.1.0"
+
+[dependencies.stm32g4]
+features = ["stm32g431", "rt"]
+version = "0.9.0"
+
+# this lets you use `cargo fix`!
+[[bin]]
+name = "firecontrol-rs"
+test = false
+bench = false
+
+[profile.release]
+codegen-units = 1 # better optimizations
+debug = true # symbols are nice and they don't increase the size on Flash
+lto = true # better optimizations
