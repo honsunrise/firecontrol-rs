@@ -12,15 +12,15 @@ cortex-m-semihosting = "0.3.5"
 panic-abort = "0.3.2"
 panic-semihosting = "0.5.3"
 sm = "0.9.0"
-heapless = "0.5.1"
+const-ft = "0.1"
 
 [dependencies.fsm-rs]
 path = "./fsm-rs/"
 version = "0.1.0"
 
-[dependencies.stm32g4]
-features = ["stm32g431", "rt"]
-version = "0.9.0"
+[dependencies.stm32f0xx-hal]
+features = ["stm32f042", "rt"]
+version = "0.15.2"
 
 # this lets you use `cargo fix`!
 [[bin]]

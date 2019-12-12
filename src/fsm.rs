@@ -1,6 +1,9 @@
 use fsm_rs::fsm;
 
 use crate::peripherals;
+use crate::peripherals::Shared;
+use core::cell::RefCell;
+use cortex_m::interrupt::Mutex;
 
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
 pub enum TriggerMode {
@@ -18,7 +21,7 @@ impl PowerON {
     }
 
     pub fn exit(&self) -> Result<State, &'static str> {
-        Ok(State::Ready(Ready{}))
+        Ok(State::Ready(Ready {}))
     }
 }
 
@@ -142,7 +145,6 @@ pub struct BatteryVoltageChange {}
 impl BatteryVoltageChange {
     pub fn on(&self) -> Result<(), &'static str> {
         Ok(())
-
     }
 }
 
@@ -152,7 +154,6 @@ pub struct SystemCurrentChange {}
 impl SystemCurrentChange {
     pub fn on(&self) -> Result<(), &'static str> {
         Ok(())
-
     }
 }
 
@@ -162,7 +163,6 @@ pub struct PullHalfTrigger {}
 impl PullHalfTrigger {
     pub fn on(&self) -> Result<(), &'static str> {
         Ok(())
-
     }
 }
 
@@ -172,7 +172,6 @@ pub struct PullFullTrigger {}
 impl PullFullTrigger {
     pub fn on(&self) -> Result<(), &'static str> {
         Ok(())
-
     }
 }
 
@@ -182,18 +181,17 @@ pub struct ReleaseTrigger {}
 impl ReleaseTrigger {
     pub fn on(&self) -> Result<(), &'static str> {
         Ok(())
-
     }
 }
 
 #[derive(Default)]
 pub struct FireControl {
-
+    shard: Option<Mutex<RefCell<Shared>>>,
 }
 
 impl Default for State {
     fn default() -> Self {
-        State::PowerON(PowerON{})
+        State::PowerON(PowerON {})
     }
 }
 

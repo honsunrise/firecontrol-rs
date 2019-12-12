@@ -1,9 +1,12 @@
 <component name="ProjectDictionaryState">
   <dictionary name="zhsyourai">
     <words>
+      <w>exti</w>
       <w>gpio</w>
+      <w>gpioa</w>
       <w>gpioc</w>
       <w>overcurrent</w>
+      <w>uart</w>
     </words>
   </dictionary>
 </component>
